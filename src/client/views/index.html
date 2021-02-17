@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner</title>
+  <link rel="shortcut icon" href="#">
+  <!--Google Font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
+  <!--End font-->
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div id="logo">
+        <img src="../media/logo2.png" alt="logo not found" width="90px" height="55px">
+      </div>
+      <nav>
+        <div class="openMenu"><i class="fas fa-bars"></i></div>
+        <ul class="mainMenu header-li">
+          <li><a href="#">home</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">services</a></li>
+          <li><a href="#">contact</a></li>
+          <li>
+            <div class="closeMenu"><i class="fas fa-times"></i></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div id="main-container">
+      <!-----Form----->
+      <form id="form-container">
+        <div class="holder city">
+          <label for="city">Destination</label>
+          <input type="text" class="fields-style" id="city" placeholder="Enter City Name">
+        </div>
+        <div class="holder date">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="trip-start" required pattern="\d{4}-\d{2}-\d{2}" class="fields-style">
+        </div>
+        <button id="generate" type="submit">Search</button>
+      </form>
+
+      <div id="welcoming">
+        <p> planning trip to anywhere in the world ?</p>
+      </div>
+
+      <div id="result-container">
+        <div id="pic"></div>
+          <div id="dataHolder">
+            <div id="main-sentence">
+              <div id="name"></div>
+              <div id="date2"></div>
+            </div>
+            <p>Typical Weather:</p>
+            <div id="weather-data">
+              <div id="temp"></div>
+              <div id="wind"></div>
+              <div id="icon-des">
+                <div id="icon"></div>
+                <div id="des"></div>
+              </div>
+            </div>
+          </div>
+          <div id="res-btn">
+            <button id="remove" class="res-btn">Remove Trip</button>
+            <button id="save" class="res-btn">Save Trip</button>
+          </div>
+      </div>
+    </div>
+
+  </main>
+  <footer>
+    <!-- <span id="copyright">&copy; 2021 by Maha Alabsi</span> -->
+    <ul class="footer-li" id="foot-edit">
+      <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </footer>
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+</body>
+
+</html>
