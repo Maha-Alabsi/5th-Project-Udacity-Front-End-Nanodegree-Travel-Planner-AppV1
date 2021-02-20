@@ -2,7 +2,7 @@ const cityName = document.getElementById("city");
 const welcoming = document.getElementById("welcoming");
 const result = document.getElementById("result-container");
 let getDate = document.getElementById("date");
-const saveTrip=document.getElementById("saved-trip")
+const saveTrip = document.getElementById("saved-trip");
 
 //Date configuration
 let todayDate = new Date();
@@ -45,7 +45,6 @@ function performAction(e) {
     date: Difference_In_Days,
   })
     .then(function (data) {
-      console.log(`hello000000 ${data}`);
       updateUI(data);
     })
     .catch(function (codeError) {
@@ -54,10 +53,10 @@ function performAction(e) {
         return alert("This City is not found");
       }
     });
-  
+
   //Related to the styling
-    welcoming.style.display = "none";
-    result.style.display = "block";
+  welcoming.style.display = "none";
+  result.style.display = "block";
 }
 
 //Function to POST data
@@ -81,13 +80,24 @@ const postData = async (url = "", data = {}) => {
 
 //Function to Update the UI
 function updateUI(data) {
-  document.getElementById("name").innerHTML = `${data.cityCountry.countryName}/${data.cityCountry.name} is ${data.appDate.date} days away`;
-  document.getElementById("pic").innerHTML = `<img src=${data.imgData.webformatURL}>`;
-  document.getElementById("temp").innerHTML = `Temperature: ${data.weatherData.temp}°C`;
-  document.getElementById("wind").innerHTML = `Wind: ${data.weatherData.wind_dir}`;
-  document.getElementById("des").innerHTML = `${data.weatherData.weather.description}`;
-  document.getElementById("icon").innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${data.weatherData.weather.icon}.png" alt="icon not found">`;
+  document.getElementById(
+    "name"
+  ).innerHTML = `${data.cityCountry.countryName}/${data.cityCountry.name} is ${data.appDate.date} days away`;
+  document.getElementById(
+    "pic"
+  ).innerHTML = `<img src=${data.imgData.webformatURL}>`;
+  document.getElementById(
+    "temp"
+  ).innerHTML = `Temperature: ${data.weatherData.temp}°C`;
+  document.getElementById(
+    "wind"
+  ).innerHTML = `Wind: ${data.weatherData.wind_dir}`;
+  document.getElementById(
+    "des"
+  ).innerHTML = `${data.weatherData.weather.description}`;
+  document.getElementById(
+    "icon"
+  ).innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${data.weatherData.weather.icon}.png" alt="icon not found">`;
 }
-
 
 export { performAction };

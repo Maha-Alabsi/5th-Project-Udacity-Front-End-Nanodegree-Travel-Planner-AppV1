@@ -59,7 +59,7 @@ let endData = {
   appData: {},
   cityCountry: {},
   weatherData: {},
-  imgData: {}
+  imgData: {},
 };
 
 //The main post Route
@@ -70,27 +70,26 @@ app.post("/addEndData", async function (req, res) {
   };
   endData.appData = appEndData;
   console.log(appEndData);
-  //1.Call Geonames API to get coordinates for certain city  
+  //1.Call Geonames API to get coordinates for certain city
   try {
-    await geoNamesApi()
-      .then(async function (data) {
-        /*2.POST coordinates to weatherbit API and get it's response
-        *If the trip is within a week, you will get the current weather forecast.
-        *If the trip is in the future, you will get a predicted forecast.
+    await geoNamesApi().then(async function (data) {
+      /*2.POST coordinates to weatherbit API and get it's response
+       *If the trip is within a week, you will get the current weather forecast.
+       *If the trip is in the future, you will get a predicted forecast.
        */
-        console.log(appEndData.date);
-        if (appEndData.date <= 7) {
-          await currentWeather(data);
-        } else {
-          await futureWeather(data);
-        }
-         //3.Get Img from the Pixabay API 
-        await dataImg(data);
-      })
+      console.log(appEndData.date);
+      if (appEndData.date <= 7) {
+        await currentWeather(data);
+      } else {
+        await futureWeather(data);
+      }
+      //3.Get Img from the Pixabay API
+      await dataImg(data);
+    });
     console.log(endData);
-    res.send(JSON.stringify(endData))
-    return JSON.stringify(endData)
-  }catch (error) {
+    res.send(JSON.stringify(endData));
+    return JSON.stringify(endData);
+  } catch (error) {
     console.log("error", error);
   }
 });
@@ -173,10 +172,3 @@ const dataImg = async (data) => {
   }
 };
 module.exports = { geoNamesApi };
-
-
-
-//To get and update client UI by the all posted data on the server  
-// app.get("/all", function (req, res) {
-//   res.send(endData);
-// });
