@@ -62,11 +62,6 @@ let endData = {
   imgData: {}
 };
 
-//To get and update client UI by the all posted data on the server  
-// app.get("/all", function (req, res) {
-//   res.send(endData);
-// });
-
 //The main post Route
 app.post("/addEndData", async function (req, res) {
   let appEndData = {
@@ -94,7 +89,7 @@ app.post("/addEndData", async function (req, res) {
       })
     console.log(endData);
     res.send(JSON.stringify(endData))
-    return endData
+    return JSON.stringify(endData)
   }catch (error) {
     console.log("error", error);
   }
@@ -117,8 +112,6 @@ const geoNamesApi = async function () {
   }
 };
 
-// export { geoNamesApi };
-  
 //-----------------Weatherbit API Calls------------------//
 
 //Get Current weather
@@ -179,9 +172,11 @@ const dataImg = async (data) => {
     console.log("error", error);
   }
 };
+module.exports = { geoNamesApi };
 
 
 
-
-
-
+//To get and update client UI by the all posted data on the server  
+// app.get("/all", function (req, res) {
+//   res.send(endData);
+// });

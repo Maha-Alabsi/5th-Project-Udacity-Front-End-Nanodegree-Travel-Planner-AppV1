@@ -14,7 +14,7 @@ module.exports = {
     devServer: {
         inline: true,
         disableHostCheck: true,
-        port: 3226
+        port: 3315
     },
     devtool: 'source-map',
     stats: 'verbose',
@@ -30,7 +30,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(svg|eot|woff|woff2|ttf|png|jpe?g|gif)$/,
+                test: /\.(png|jpe?g|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -38,6 +38,17 @@ module.exports = {
                             name: '[name].[ext]',
                             outputPath: 'media/',
                             publicPath:'media/'
+                        }
+                    },]
+            },
+            {
+                test: /\.(svg|eot|woff2|ttf)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'media/webfonts',
+                            publicPath:'media/webfonts'
                         }
                     },]
             }
