@@ -82,7 +82,7 @@ const postData = async (url = "", data = {}) => {
 function updateUI(data) {
   document.getElementById(
     "name"
-  ).innerHTML = `${data.cityCountry.countryName}/${data.cityCountry.name} is ${data.appDate.date} days away`;
+  ).innerHTML = `${data.cityCountry.countryName}/${data.cityCountry.name} is ${data.appData.date} days away`;
   document.getElementById(
     "pic"
   ).innerHTML = `<img src=${data.imgData.webformatURL}>`;
